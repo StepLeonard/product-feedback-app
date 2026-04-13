@@ -6,9 +6,9 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 
 | Resource         | Method | Endpoint                      | Description                              |
 |------------------|--------|-------------------------------|------------------------------------------|
-| `suggestions`    | GET    | /get-all-suggestions          | Write your description here              |
-| `suggestions`    | GET    | /get-suggestions-by-category  | Write your description here              |
-| `suggestions`    | POST   | /add-one-suggestion           | Write your description here              |
+| `suggestions`    | GET    | /get-all-suggestions          |  Retrieves all product feedback suggestions             |
+| `suggestions`    | GET    | /get-suggestions-by-category  | Retrieves suggestions filtered by category.              |
+| `suggestions`    | POST   | /add-one-suggestion           | Adds a new feedback suggestion to the database.              |
 
 ---
 
