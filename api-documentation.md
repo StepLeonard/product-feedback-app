@@ -14,50 +14,72 @@ Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
 
 ### 🔹 GET `/get-all-suggestions`
 
-**Description:** Write your description here
+**Description:** Retrieves all feedback suggestions from the database.
 
-**Example Response:**
+**Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+[
+  {
+    "suggestion_id": 1,
+    "title": "Add dark mode",
+    "category": "UI",
+    "description": "It would be nice if users could switch to dark mode."
+  },
+  {
+    "suggestion_id": 2,
+    "title": "Allow sorting by newest",
+    "category": "UX",
+    "description": "Users should be able to sort feedback by newest first."
+  },
+  {
+    "suggestion_id": 3,
+    "title": "Add mobile improvements",
+    "category": "Enhancement",
+    "description": "The app should look better on mobile devices."
+  }
+
 ```
 
 ---
 
 ### 🔹 GET `/get-suggestions-by-category/:category`
 
-**Description:** Write your description here
+**Description:** Retrieves all feedback suggestions that match a specific category.
 
-**Example Response:**
+**Response:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+[
+  {
+    "suggestion_id": 1,
+    "title": "Add dark mode",
+    "category": "UI",
+    "description": "It would be nice if users could switch to dark mode."
+  }
+]
 ```
 
 ---
 
 ### 🔹 POST `/add-one-suggestion`
 
-**Description:** Write your description here
+**Description:** Adds a new feedback suggestion to the database.
 
-**Example Request Body:**
-
-```
-Write the data required in the request body. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
-```
-
-**Example Response:**
+**Request Body:**
 
 ```
-Write the data returned by this endpoint. 
-Think about its data type (String, Object, Array of Objects, etc.)
-Use spaces/indents to format the data if it is an array or object. 
+{
+  "title": "Add search feature",
+  "category": "Feature",
+  "description": "Users should be able to search through suggestions."
+}
+```
+
+**Response:**
+
+```
+Success! Suggestion has been added.
 ```
 ---
 
