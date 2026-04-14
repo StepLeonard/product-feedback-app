@@ -26,13 +26,13 @@ textarea {
 }
 
 /* this is the top color background */
-.top-bg {
+.topBackground {
   height: 160px;
   background: linear-gradient(135deg, #28a7ed, #a337f6, #e84d70);
 }
 
 /* this is the main layout */
-.wrap {
+.mainLayout {
   width: 90%;
   max-width: 1110px;
   margin: -105px auto 40px auto;
@@ -41,7 +41,7 @@ textarea {
 }
 
 /* this styles the left side */
-.left-side {
+.leftPanel {
   width: 255px;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@ textarea {
 }
 
 /* this is the title card */
-.title-box {
+.titleBox {
   height: 137px;
   border-radius: 10px;
   background: linear-gradient(135deg, #28a7ed, #a337f6, #e84d70);
@@ -60,13 +60,13 @@ textarea {
 }
 
 /* this styles the title text */
-.title-box h1 {
+.titleBox h1 {
   font-size: 20px;
   margin-bottom: 4px;
 }
 
 /* this is the filter box */
-.filter-box {
+.filterBox {
   background: white;
   border-radius: 10px;
   padding: 24px;
@@ -76,7 +76,7 @@ textarea {
 }
 
 /* this styles the filter buttons */
-.type-btn {
+.filterButton {
   border: none;
   background: #f2f4ff;
   color: #4661e6;
@@ -87,18 +87,18 @@ textarea {
 }
 
 /* this styles the selected filter button */
-.type-btn.on {
+.filterButton.active {
   background: #4661e6;
   color: white;
 }
 
 /* this styles the right side */
-.right-side {
+.rightPanel {
   flex: 1;
 }
 
 /* this is the dark top bar */
-.bar {
+.topBar {
   background: #373f68;
   color: white;
   border-radius: 10px;
@@ -110,14 +110,14 @@ textarea {
 }
 
 /* this styles the left side of the bar */
-.bar-left {
+.topBarLeft {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
 /* this styles the add feedback button */
-.add-btn {
+.addButton {
   border: none;
   background: #ad1fea;
   color: white;
@@ -130,33 +130,35 @@ textarea {
   gap: 8px;
 }
 
-/* this styles the list of cards */
-.card-list {
+/* this styles the list of feedback cards */
+.feedbackListBox {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* this styles each suggestion card */
-.card {
+/* this styles each feedback card */
+.feedbackCard {
   background: white;
   border-radius: 10px;
-  padding: 24px;
+  padding: 28px 32px;
 }
 
 /* this styles the card title */
-.card h3 {
+.feedbackCard h3 {
+  font-size: 18px;
   margin-bottom: 8px;
 }
 
 /* this styles the card text */
-.card p {
+.feedbackCard p {
   color: #647196;
+  line-height: 1.5;
   margin-bottom: 14px;
 }
 
 /* this styles the category tag */
-.tag {
+.categoryTag {
   display: inline-block;
   background: #f2f4ff;
   color: #4661e6;
@@ -167,7 +169,7 @@ textarea {
 }
 
 /* this styles the empty state */
-.empty-box {
+.emptyState {
   background: white;
   border-radius: 10px;
   min-height: 500px;
@@ -181,123 +183,33 @@ textarea {
 }
 
 /* this styles the empty image */
-.empty-pic {
+.emptyImage {
   width: 130px;
 }
 
 /* this styles the empty text */
-.empty-box p {
+.emptyState p {
   max-width: 420px;
   color: #647196;
   line-height: 1.6;
 }
 
-/* this makes the layout fit tablet screens */
-@media (max-width: 1023px) {
-  .wrap {
-    flex-direction: column;
-  }
-
-  .left-side {
-    width: 100%;
-    flex-direction: row;
-  }
-
-  .title-box,
-  .filter-box {
-    flex: 1;
-  }
-}
-
-/* this makes the page fit mobile screens */
-@media (max-width: 767px) {
-  .wrap {
-    width: 92%;
-    margin-top: -90px;
-  }
-
-  .left-side {
-    flex-direction: column;
-  }
-
-  .bar {
-    padding: 14px 16px;
-  }
-}
-/* this styles each suggestion card better */
-.card {
-  background: white;
-  border-radius: 10px;
-  padding: 28px 32px;
-  display: grid;
-  grid-template-columns: 44px 1fr auto;
-  gap: 24px;
-  align-items: center;
-}
-
-/* this is the upvote box */
-.up-box {
-  width: 44px;
-  min-height: 53px;
-  border-radius: 10px;
-  background: #f2f4ff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  font-weight: bold;
-}
-
-/* this styles the middle card text */
-.card-middle h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-/* this styles the description text */
-.card-middle p {
-  color: #647196;
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-
-/* this styles the comment box */
-.comment-box {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: bold;
-}
-
-@media (max-width: 767px) {
-  .card {
-    grid-template-columns: 1fr;
-    padding: 24px;
-  }
-
-  .up-box {
-    width: 70px;
-    min-height: 36px;
-    flex-direction: row;
-  }
-}
 /* this styles the add feedback page */
-.add-page {
+.addPage {
   min-height: 100vh;
   background: #f7f8fd;
   padding: 40px 20px 80px 20px;
 }
 
 /* this keeps the form page centered */
-.add-wrap {
+.formContainer {
   width: 100%;
   max-width: 540px;
   margin: 0 auto;
 }
 
 /* this styles the go back button */
-.back-btn {
+.backButton {
   border: none;
   background: transparent;
   color: #647196;
@@ -310,7 +222,7 @@ textarea {
 }
 
 /* this styles the white form card */
-.form-box {
+.formBox {
   background: white;
   border-radius: 10px;
   padding: 52px 42px 40px 42px;
@@ -318,7 +230,7 @@ textarea {
 }
 
 /* this styles the round icon on top of the form */
-.form-top-icon {
+.formIcon {
   width: 56px;
   height: 56px;
   position: absolute;
@@ -327,35 +239,35 @@ textarea {
 }
 
 /* this styles the form title */
-.form-box h1 {
+.formBox h1 {
   font-size: 24px;
   margin-bottom: 36px;
 }
 
 /* this styles the form layout */
-.kid-form {
+.formLayout {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 /* this styles the form labels */
-.kid-form label {
+.formLayout label {
   font-weight: bold;
   margin-top: 8px;
 }
 
 /* this styles the helper text under labels */
-.small-text {
+.smallText {
   color: #647196;
   margin-top: -6px;
   margin-bottom: 10px;
 }
 
 /* this styles inputs and textarea */
-.kid-form input,
-.kid-form select,
-.kid-form textarea {
+.formLayout input,
+.formLayout select,
+.formLayout textarea {
   width: 100%;
   border: none;
   background: #f7f8fd;
@@ -365,12 +277,12 @@ textarea {
 }
 
 /* this lets textarea be resized only up and down */
-.kid-form textarea {
+.formLayout textarea {
   resize: vertical;
 }
 
 /* this styles the button row */
-.form-btns {
+.buttonRow {
   display: flex;
   justify-content: flex-end;
   gap: 16px;
@@ -378,7 +290,7 @@ textarea {
 }
 
 /* this styles the cancel button */
-.cancel-btn {
+.cancelButton {
   border: none;
   background: #3a4374;
   color: white;
@@ -389,7 +301,7 @@ textarea {
 }
 
 /* this styles the submit button */
-.submit-btn {
+.submitButton {
   border: none;
   background: #ad1fea;
   color: white;
@@ -399,22 +311,57 @@ textarea {
   cursor: pointer;
 }
 
-@media (max-width: 767px) {
-  .form-box {
-    padding: 44px 24px 24px 24px;
-  }
-
-  .form-top-icon {
-    left: 24px;
-  }
-
-  .form-btns {
+/* this makes the layout fit tablet screens */
+@media (max-width: 1023px) {
+  .mainLayout {
     flex-direction: column;
   }
 
-  .cancel-btn,
-  .submit-btn,
-  .add-btn {
+  .leftPanel {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .titleBox,
+  .filterBox {
+    flex: 1;
+  }
+}
+
+/* this makes the page fit mobile screens */
+@media (max-width: 767px) {
+  .mainLayout {
+    width: 92%;
+    margin-top: -90px;
+  }
+
+  .leftPanel {
+    flex-direction: column;
+  }
+
+  .topBar {
+    padding: 14px 16px;
+  }
+
+  .feedbackCard {
+    padding: 24px;
+  }
+
+  .formBox {
+    padding: 44px 24px 24px 24px;
+  }
+
+  .formIcon {
+    left: 24px;
+  }
+
+  .buttonRow {
+    flex-direction: column;
+  }
+
+  .cancelButton,
+  .submitButton,
+  .addButton {
     width: 100%;
     justify-content: center;
   }

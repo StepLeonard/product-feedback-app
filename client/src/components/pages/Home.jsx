@@ -7,116 +7,157 @@ import { useNavigate } from "react-router-dom";
 
 // we import the images and icons
 import iconSuggestions from "../../assets/suggestions/icon-suggestions.svg";
-import iconComments from "../../assets/icons/icon-comments.svg";
 import iconPlus from "../../assets/icons/icon-plus.svg";
 import illustrationEmpty from "../../assets/suggestions/illustration-empty.svg";
 
 // this is the home page
 function Home() {
-  // this stores all the suggestions
-  const [list, setList] = useState([]);
+  // =========================
+  // STATE
+  // =========================
+
+  // this stores all the feedback from the database
+  const [feedbackList, setFeedbackList] = useState([]);
 
   // this stores which category is picked
-  const [pick, setPick] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   // this helps us go to another page
-  const go = useNavigate();
+  const goToPage = useNavigate();
 
-  // this runs when the page first opens
+  // =========================
+  // HELPER FUNCTIONS
+  // =========================
+
+  // this runs one time when the page first loads
   useEffect(() => {
-    getAll();
+    getAllFeedback();
   }, []);
 
-  // this gets all suggestions
-  const getAll = async () => {
+  // this gets all feedback from the backend
+  const getAllFeedback = async () => {
     try {
       const res = await fetch("/api/get-all-suggestions");
       const data = await res.json();
-      setList(data);
+      setFeedbackList(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  // this gets suggestions by category
-  const getByType = async (type) => {
+  // this gets feedback based on category
+  const getFeedbackByCategory = async (category) => {
     try {
-      if (type === "All") {
-        getAll();
+      if (category === "All") {
+        getAllFeedback();
         return;
       }
 
-      const res = await fetch(`/api/get-suggestions-by-category/${type}`);
+      const res = await fetch(`/api/get-suggestions-by-category/${category}`);
       const data = await res.json();
-      setList(data);
+      setFeedbackList(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   // this runs when a filter button is clicked
-  const clickType = (type) => {
-    setPick(type);
-    getByType(type);
+  const clickCategory = (category) => {
+    setSelectedCategory(category);
+    getFeedbackByCategory(category);
   };
+
+  // =========================
+  // API ENDPOINTS USED
+  // =========================
+  // GET /api/get-all-suggestions
+  // GET /api/get-suggestions-by-category/:category
+
+  // =========================
+  // RETURN
+  // =========================
 
   return (
     <div className="page">
-      {/* this is the top color area */}
-      <div className="top-bg"></div>
+      {/* this is the top color background */}
+      <div className="topBackground"></div>
 
       {/* this is the main layout */}
-      <div className="wrap">
+      <div className="mainLayout">
         {/* this is the left side */}
-        <div className="left-side">
-          {/* this is the title card */}
-          <div className="title-box">
+        <div className="leftPanel">
+          {/* this is the title box */}
+          <div className="titleBox">
             <div>
               <h1>My Company</h1>
               <p>Feedback Board</p>
             </div>
           </div>
 
-          {/* this is the filter card */}
-          <div className="filter-box">
+          {/* this is the filter button box */}
+          <div className="filterBox">
             <button
-              className={pick === "All" ? "type-btn on" : "type-btn"}
-              onClick={() => clickType("All")}
+              className={
+                selectedCategory === "All"
+                  ? "filterButton active"
+                  : "filterButton"
+              }
+              onClick={() => clickCategory("All")}
             >
               All
             </button>
 
             <button
-              className={pick === "UI" ? "type-btn on" : "type-btn"}
-              onClick={() => clickType("UI")}
+              className={
+                selectedCategory === "UI"
+                  ? "filterButton active"
+                  : "filterButton"
+              }
+              onClick={() => clickCategory("UI")}
             >
               UI
             </button>
 
             <button
-              className={pick === "UX" ? "type-btn on" : "type-btn"}
-              onClick={() => clickType("UX")}
+              className={
+                selectedCategory === "UX"
+                  ? "filterButton active"
+                  : "filterButton"
+              }
+              onClick={() => clickCategory("UX")}
             >
               UX
             </button>
 
             <button
-              className={pick === "Enhancement" ? "type-btn on" : "type-btn"}
-              onClick={() => clickType("Enhancement")}
+              className={
+                selectedCategory === "Enhancement"
+                  ? "filterButton active"
+                  : "filterButton"
+              }
+              onClick={() => clickCategory("Enhancement")}
             >
               Enhancement
             </button>
 
             <button
-              className={pick === "Feature" ? "type-btn on" : "type-btn"}
-              onClick={() => clickType("Feature")}
+              className={
+                selectedCategory === "Feature"
+                  ? "filterButton active"
+                  : "filterButton"
+              }
+              onClick={() => clickCategory("Feature")}
             >
               Feature
             </button>
 
             <button
-              className={pick === "Bug" ? "type-btn on" : "type-btn"}
-              onClick={() => clickType("Bug")}
+              className={
+                selectedCategory === "Bug"
+                  ? "filterButton active"
+                  : "filterButton"
+              }
+              onClick={() => clickCategory("Bug")}
             >
               Bug
             </button>
@@ -124,57 +165,57 @@ function Home() {
         </div>
 
         {/* this is the right side */}
-        <div className="right-side">
+        <div className="rightPanel">
           {/* this is the top bar */}
-          <div className="bar">
-            <div className="bar-left">
+          <div className="topBar">
+            <div className="topBarLeft">
               <img src={iconSuggestions} alt="suggestions icon" />
-              <h2>{list.length} Suggestions</h2>
+              <h2>{feedbackList.length} Suggestions</h2>
             </div>
 
-            <button className="add-btn" onClick={() => go("/add-feedback")}>
+            {/* this button goes to the add feedback page */}
+            <button
+              className="addButton"
+              onClick={() => goToPage("/add-feedback")}
+            >
               <img src={iconPlus} alt="plus icon" />
               <span>Add Feedback</span>
             </button>
           </div>
 
-          {/* this shows empty state if there are no suggestions */}
-          {list.length === 0 ? (
-            <div className="empty-box">
-              <img src={illustrationEmpty} alt="empty" className="empty-pic" />
+          {/* if there is no feedback, show empty state */}
+          {feedbackList.length === 0 ? (
+            <div className="emptyState">
+              <img
+                src={illustrationEmpty}
+                alt="empty"
+                className="emptyImage"
+              />
               <h3>There is no feedback yet.</h3>
               <p>
                 Got a suggestion? Found a bug that needs to be fixed? Let us
                 know.
               </p>
 
-              <button className="add-btn" onClick={() => go("/add-feedback")}>
+              <button
+                className="addButton"
+                onClick={() => goToPage("/add-feedback")}
+              >
                 <img src={iconPlus} alt="plus icon" />
                 <span>Add Feedback</span>
               </button>
             </div>
           ) : (
-            <div className="card-list">
-  {list.map((oneItem) => (
-    <div key={oneItem.suggestion_id} className="card">
-      <div className="up-box">
-        <span>▲</span>
-        <span>0</span>
-      </div>
-
-      <div className="card-middle">
-        <h3>{oneItem.title}</h3>
-        <p>{oneItem.description}</p>
-        <span className="tag">{oneItem.category}</span>
-      </div>
-
-      <div className="comment-box">
-        <img src={iconComments} alt="comments icon" />
-        <span>0</span>
-      </div>
-    </div>
-  ))}
-</div>
+            /* if we do have feedback, show the list */
+            <div className="feedbackListBox">
+              {feedbackList.map((feedback) => (
+                <div key={feedback.suggestion_id} className="feedbackCard">
+                  <h3>{feedback.title}</h3>
+                  <p>{feedback.description}</p>
+                  <span className="categoryTag">{feedback.category}</span>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </div>
@@ -182,4 +223,5 @@ function Home() {
   );
 }
 
+// we export the page
 export default Home;
