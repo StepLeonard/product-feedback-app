@@ -1,184 +1,421 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* this resets default browser spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+/* this styles the page */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f8fd;
+  color: #3a4374;
 }
 
-#center {
+/* this makes form items use the same font */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* this styles the home page */
+.page {
+  min-height: 100vh;
+}
+
+/* this is the top color background */
+.top-bg {
+  height: 160px;
+  background: linear-gradient(135deg, #28a7ed, #a337f6, #e84d70);
+}
+
+/* this is the main layout */
+.wrap {
+  width: 90%;
+  max-width: 1110px;
+  margin: -105px auto 40px auto;
+  display: flex;
+  gap: 24px;
+}
+
+/* this styles the left side */
+.left-side {
+  width: 255px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  gap: 24px;
 }
 
-#next-steps {
+/* this is the title card */
+.title-box {
+  height: 137px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #28a7ed, #a337f6, #e84d70);
+  color: white;
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  align-items: flex-end;
+  padding: 24px;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+/* this styles the title text */
+.title-box h1 {
+  font-size: 20px;
+  margin-bottom: 4px;
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
+/* this is the filter box */
+.filter-box {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* this styles the filter buttons */
+.type-btn {
+  border: none;
+  background: #f2f4ff;
+  color: #4661e6;
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* this styles the selected filter button */
+.type-btn.on {
+  background: #4661e6;
+  color: white;
+}
+
+/* this styles the right side */
+.right-side {
+  flex: 1;
+}
+
+/* this is the dark top bar */
+.bar {
+  background: #373f68;
+  color: white;
+  border-radius: 10px;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+/* this styles the left side of the bar */
+.bar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* this styles the add feedback button */
+.add-btn {
+  border: none;
+  background: #ad1fea;
+  color: white;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
   gap: 8px;
-  margin: 32px 0 0;
+}
 
-  .logo {
-    height: 18px;
+/* this styles the list of cards */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* this styles each suggestion card */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+/* this styles the card title */
+.card h3 {
+  margin-bottom: 8px;
+}
+
+/* this styles the card text */
+.card p {
+  color: #647196;
+  margin-bottom: 14px;
+}
+
+/* this styles the category tag */
+.tag {
+  display: inline-block;
+  background: #f2f4ff;
+  color: #4661e6;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* this styles the empty state */
+.empty-box {
+  background: white;
+  border-radius: 10px;
+  min-height: 500px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+
+/* this styles the empty image */
+.empty-pic {
+  width: 130px;
+}
+
+/* this styles the empty text */
+.empty-box p {
+  max-width: 420px;
+  color: #647196;
+  line-height: 1.6;
+}
+
+/* this makes the layout fit tablet screens */
+@media (max-width: 1023px) {
+  .wrap {
+    flex-direction: column;
   }
 
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
+  .left-side {
+    width: 100%;
+    flex-direction: row;
   }
 
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
+  .title-box,
+  .filter-box {
+    flex: 1;
   }
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
+/* this makes the page fit mobile screens */
+@media (max-width: 767px) {
+  .wrap {
+    width: 92%;
+    margin-top: -90px;
+  }
+
+  .left-side {
+    flex-direction: column;
+  }
+
+  .bar {
+    padding: 14px 16px;
   }
 }
+/* this styles each suggestion card better */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
 
-.ticks {
-  position: relative;
+/* this is the upvote box */
+.up-box {
+  width: 44px;
+  min-height: 53px;
+  border-radius: 10px;
+  background: #f2f4ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+}
+
+/* this styles the middle card text */
+.card-middle h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+/* this styles the description text */
+.card-middle p {
+  color: #647196;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* this styles the comment box */
+.comment-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  .card {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .up-box {
+    width: 70px;
+    min-height: 36px;
+    flex-direction: row;
+  }
+}
+/* this styles the add feedback page */
+.add-page {
+  min-height: 100vh;
+  background: #f7f8fd;
+  padding: 40px 20px 80px 20px;
+}
+
+/* this keeps the form page centered */
+.add-wrap {
   width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+/* this styles the go back button */
+.back-btn {
+  border: none;
+  background: transparent;
+  color: #647196;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 60px;
+}
+
+/* this styles the white form card */
+.form-box {
+  background: white;
+  border-radius: 10px;
+  padding: 52px 42px 40px 42px;
+  position: relative;
+}
+
+/* this styles the round icon on top of the form */
+.form-top-icon {
+  width: 56px;
+  height: 56px;
+  position: absolute;
+  top: -28px;
+  left: 42px;
+}
+
+/* this styles the form title */
+.form-box h1 {
+  font-size: 24px;
+  margin-bottom: 36px;
+}
+
+/* this styles the form layout */
+.kid-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* this styles the form labels */
+.kid-form label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* this styles the helper text under labels */
+.small-text {
+  color: #647196;
+  margin-top: -6px;
+  margin-bottom: 10px;
+}
+
+/* this styles inputs and textarea */
+.kid-form input,
+.kid-form select,
+.kid-form textarea {
+  width: 100%;
+  border: none;
+  background: #f7f8fd;
+  border-radius: 8px;
+  padding: 14px 16px;
+  color: #3a4374;
+}
+
+/* this lets textarea be resized only up and down */
+.kid-form textarea {
+  resize: vertical;
+}
+
+/* this styles the button row */
+.form-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* this styles the cancel button */
+.cancel-btn {
+  border: none;
+  background: #3a4374;
+  color: white;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* this styles the submit button */
+.submit-btn {
+  border: none;
+  background: #ad1fea;
+  color: white;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .form-box {
+    padding: 44px 24px 24px 24px;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .form-top-icon {
+    left: 24px;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .form-btns {
+    flex-direction: column;
+  }
+
+  .cancel-btn,
+  .submit-btn,
+  .add-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

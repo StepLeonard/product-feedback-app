@@ -1,8 +1,13 @@
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/pages/Home.jsx";
+import AddFeedback from "./components/pages/AddFeedback.jsx";
+
 function App() {
   return (
-    <div>
-      <h1>Frontend is working ✅</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/add-feedback" element={<AddFeedback />} />
+    </Routes>
   );
 }
 
