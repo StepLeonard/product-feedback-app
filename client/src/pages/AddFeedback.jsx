@@ -5,8 +5,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // we import the icons for this page
-import iconArrowLeft from "../../assets/icons/icon-arrow-left.svg";
-import iconNewFeedback from "../../assets/icons/icon-new-feedback.svg";
+import iconArrowLeft from "../assets/icons/icon-arrow-left.svg";
+import iconNewFeedback from "../assets/icons/icon-new-feedback.svg";
 
 // this is the add feedback page
 function AddFeedback() {

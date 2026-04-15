@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // we import the images and icons
-import iconSuggestions from "../../assets/suggestions/icon-suggestions.svg";
-import iconPlus from "../../assets/icons/icon-plus.svg";
-import illustrationEmpty from "../../assets/suggestions/illustration-empty.svg";
+import iconSuggestions from "../assets/suggestions/icon-suggestions.svg";
+import iconPlus from "../assets/icons/icon-plus.svg";
+import illustrationEmpty from "../assets/suggestions/illustration-empty.svg";
 
 // this is the home page
 function Home() {

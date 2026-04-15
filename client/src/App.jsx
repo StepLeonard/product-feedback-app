@@ -2,8 +2,8 @@
 import { Routes, Route } from "react-router-dom";
 
 // we import our pages
-import Home from "./components/pages/Home.jsx";
-import AddFeedback from "./components/pages/AddFeedback.jsx";
+import Home from "./pages/Home.jsx";
+import AddFeedback from "./pages/AddFeedback.jsx";
 
 // this decides which page shows
 function App() {
