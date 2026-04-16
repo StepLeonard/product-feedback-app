@@ -71,8 +71,20 @@ The goal of this app is to simulate a real-world feedback system where users can
 - `POST /add-one-suggestion`  
 
 ---
+## 🗄️ Database Schema
 
-## 🚀 What I Did
+Here’s the SQL I used to create my table:
+
+```sql
+CREATE TABLE suggestions (
+  suggestion_id SERIAL PRIMARY KEY,
+  title VARCHAR(100) NOT NULL,
+  category VARCHAR(50) NOT NULL,
+  description TEXT NOT NULL
+);
+```
+
+## 🚀 Reflections
 
 - Built a full-stack application using **React, Express, and PostgreSQL**
 - Created REST API endpoints to fetch and store feedback data
@@ -85,11 +97,9 @@ The goal of this app is to simulate a real-world feedback system where users can
 
 ---
 
-## 💡 Future Improvements
+## 🙌 Acknowledgements
 
-- 🔐 Add user authentication  
-- 👍 Add upvote/downvote system  
-- 💬 Add comments to feedback  
+Shoutout to Arianna and Phil for teaching me backend development and guiding me through the skills used to build this project. 
   
 
 ---
