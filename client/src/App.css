@@ -28,7 +28,7 @@ textarea {
 /* this is the top color background */
 .topBackground {
   height: 160px;
-  background: linear-gradient(135deg, #28a7ed, #a337f6, #e84d70);
+  background: f7f8fd;
 }
 
 /* this is the main layout */
@@ -361,8 +361,9 @@ textarea {
 
   .cancelButton,
   .submitButton,
-  .addButton {
-    width: 100%;
-    justify-content: center;
-  }
+ .addButton {
+  padding: 10px 14px;
+  font-size: 14px;
+  white-space: nowrap;
+}
 }
