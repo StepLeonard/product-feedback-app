@@ -1,8 +1,13 @@
 // we import express so we can make a server
 import express from "express";
+import pg from "pg";
 
-// we import our database connection
-import pool from "./config.js";
+
+// connect to the database
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
 
 // we create the app
 const app = express();
