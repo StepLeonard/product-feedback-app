@@ -10,11 +10,12 @@ import iconSuggestions from "../assets/suggestions/icon-suggestions.svg";
 import iconPlus from "../assets/icons/icon-plus.svg";
 import illustrationEmpty from "../assets/suggestions/illustration-empty.svg";
 
+// we import the suggestion card component
+import SuggestionCard from "../components/SuggestionCard.jsx";
+
 // this is the home page
 function Home() {
-  // =========================
-  // STATE
-  // =========================
+  
 
   // this stores all the feedback from the database
   const [feedbackList, setFeedbackList] = useState([]);
@@ -25,9 +26,7 @@ function Home() {
   // this helps us go to another page
   const goToPage = useNavigate();
 
-  // =========================
-  // HELPER FUNCTIONS
-  // =========================
+  
 
   // this runs one time when the page first loads
   useEffect(() => {
@@ -37,9 +36,9 @@ function Home() {
   // this gets all feedback from the backend
   const getAllFeedback = async () => {
     try {
-      const res = await fetch("/api/get-all-suggestions");
-      const data = await res.json();
-      setFeedbackList(data);
+      const response = await fetch("/api/get-all-suggestions");
+      const result = await response.json();
+      setFeedbackList(result);
     } catch (error) {
       console.log(error);
     }
@@ -53,9 +52,9 @@ function Home() {
         return;
       }
 
-      const res = await fetch(`/api/get-suggestions-by-category/${category}`);
-      const data = await res.json();
-      setFeedbackList(data);
+      const response = await fetch(`/api/get-suggestions-by-category/${category}`);
+      const result = await response.json();
+      setFeedbackList(result);
     } catch (error) {
       console.log(error);
     }
@@ -67,15 +66,11 @@ function Home() {
     getFeedbackByCategory(category);
   };
 
-  // =========================
-  // API ENDPOINTS USED
-  // =========================
-  // GET /api/get-all-suggestions
-  // GET /api/get-suggestions-by-category/:category
+  
 
-  // =========================
+  
   // RETURN
-  // =========================
+  
 
   return (
     <div className="page">
@@ -183,7 +178,7 @@ function Home() {
             </button>
           </div>
 
-          {/* if there is no feedback, show empty state */}
+          {/* if there is no feedback..empty */}
           {feedbackList.length === 0 ? (
             <div className="emptyState">
               <img
@@ -209,11 +204,10 @@ function Home() {
             /* if we do have feedback, show the list */
             <div className="feedbackListBox">
               {feedbackList.map((feedback) => (
-                <div key={feedback.suggestion_id} className="feedbackCard">
-                  <h3>{feedback.title}</h3>
-                  <p>{feedback.description}</p>
-                  <span className="categoryTag">{feedback.category}</span>
-                </div>
+                <SuggestionCard
+                  key={feedback.suggestion_id}
+                  feedback={feedback}
+                />
               ))}
             </div>
           )}

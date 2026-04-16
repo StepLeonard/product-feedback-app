@@ -10,9 +10,7 @@ import iconNewFeedback from "../assets/icons/icon-new-feedback.svg";
 
 // this is the add feedback page
 function AddFeedback() {
-  // =========================
-  // STATE
-  // =========================
+  
 
   // this stores everything the user types in the form
   const [feedbackForm, setFeedbackForm] = useState({
@@ -24,9 +22,7 @@ function AddFeedback() {
   // this lets us move between pages
   const goToPage = useNavigate();
 
-  // =========================
-  // HELPER FUNCTIONS
-  // =========================
+  
 
   // this updates the form when the user types
   const updateForm = (event) => {
@@ -69,14 +65,11 @@ function AddFeedback() {
     }
   };
 
-  // =========================
-  // API ENDPOINTS USED
-  // =========================
-  // POST /api/add-one-suggestion
+ 
 
-  // =========================
+  
   // RETURN
-  // =========================
+  
 
   return (
     <div className="addPage">

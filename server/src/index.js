@@ -99,9 +99,9 @@ app.post("/add-one-suggestion", async (req, res) => {
 });
 
 
-// =========================
+
 // START SERVER
-// =========================
+
 
 // this starts the server
 app.listen(PORT, () => {
