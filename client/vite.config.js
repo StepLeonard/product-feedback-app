@@ -1,4 +1,4 @@
-// we import defineConfig from vite
+ // we import defineConfig from vite
 import { defineConfig } from "vite";
 
 // we import the react plugin for vite

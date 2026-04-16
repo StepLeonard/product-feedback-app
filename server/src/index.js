@@ -2,7 +2,6 @@
 import express from "express";
 import pg from "pg";
 
-
 // connect to the database
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -18,14 +17,13 @@ const PORT = 3000;
 // this lets us read JSON from Postman and the frontend
 app.use(express.json());
 
-
 // =========================
 // HELPER FUNCTIONS
 // =========================
 
 // this gets all suggestions from the database
 const getAllSuggestions = async () => {
-  const result = await pool.query(
+  const result = await db.query(
     "SELECT * FROM suggestions ORDER BY suggestion_id;"
   );
 
@@ -34,7 +32,7 @@ const getAllSuggestions = async () => {
 
 // this gets suggestions by category
 const getSuggestionsByCategory = async (category) => {
-  const result = await pool.query(
+  const result = await db.query(
     "SELECT * FROM suggestions WHERE category = $1 ORDER BY suggestion_id;",
     [category]
   );
@@ -44,14 +42,13 @@ const getSuggestionsByCategory = async (category) => {
 
 // this adds one new suggestion into the database
 const addOneSuggestion = async (title, category, description) => {
-  const result = await pool.query(
+  const result = await db.query(
     "INSERT INTO suggestions (title, category, description) VALUES ($1, $2, $3) RETURNING *;",
     [title, category, description]
   );
 
   return result.rows[0];
 };
-
 
 // =========================
 // API ENDPOINTS
@@ -90,11 +87,7 @@ app.post("/add-one-suggestion", async (req, res) => {
       return res.status(400).send("All fields are required");
     }
 
-    const newSuggestion = await addOneSuggestion(
-      title,
-      category,
-      description
-    );
+    const newSuggestion = await addOneSuggestion(title, category, description);
 
     res.json(newSuggestion);
   } catch (error) {
@@ -103,10 +96,7 @@ app.post("/add-one-suggestion", async (req, res) => {
   }
 });
 
-
-
 // START SERVER
-
 
 // this starts the server
 app.listen(PORT, () => {
