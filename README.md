@@ -68,7 +68,9 @@ The goal of this app is to simulate a real-world feedback system where users can
 
 - `GET /get-all-suggestions`  
 - `GET /get-suggestions-by-category/:category`  
-- `POST /add-one-suggestion`  
+- `POST /add-one-suggestion`
+
+Here's the link to the full API documentation: https://github.com/StepLeonard/product-feedback-app/blob/main/api-documentation.md
 
 ---
 ## 🗄️ Database Schema
