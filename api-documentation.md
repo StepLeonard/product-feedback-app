@@ -1,6 +1,6 @@
 # 📘 Product Feedback API Documentation
 
-Base URL: `https://REPLACE-THIS-WITH-YOUR-DEPLOYED-URL.onrender.com`
+Base URL: `https://product-feedback-app-iurs.onrender.com`
 
 ## Overview
 
